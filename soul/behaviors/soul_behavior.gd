@@ -4,6 +4,9 @@ class_name SoulBehavior
 ## The instace of the soul using this behavior. It is set automatically when the behavior is applied.
 @export var soul : Soul
 
+## Added to set the direction the Soul is facing
+@export var face_direction : Direction = Direction.WEST
+
 ## Runs when the behavior is first applied to the soul.
 func start() -> void:
 	pass
