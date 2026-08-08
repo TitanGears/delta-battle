@@ -50,3 +50,4 @@ static var BLUE := SoulType.new(Color("003CFF")).addBehavior("movement/blue_soul
 static var PURPLE := SoulType.new(Color("D535D9")).addBehavior("movement/string_move")
 static var GREEN := SoulType.new(Color("00C000")).addBehavior("shielding_behavior")
 static var YELLOW := basic_moving_soul(Color("FFFF00")).addBehavior("shoot_behavior")
+static var MONSTER := basic_moving_soul(Color("FFFFFF")).set_monster()

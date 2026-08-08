@@ -21,12 +21,15 @@ func _physics_process(delta: float) -> void:
 		graze(pellet, delta)
 
 func graze(p_pellet: Pellet, p_delta: float) -> void:
+	# parent_getteeeer = get_parent().get_parent() # for child of Soul
+	# parent_getteeeer = get_parent() *3 # for Grazer follow Heart shape
+	var parent_getter = get_parent().get_parent()
 	if soul.invulnerable:
 		return
 	if p_pellet.grazed:
 		soul.battle.tp += 30.0 * p_delta * p_pellet.graze_points * soul.battle.tp_coefficient / 20.0
-		if get_parent().get_parent().turn_timer >= 1.0 / 3.0:
-			get_parent().get_parent().turn_timer -= 30.0 * p_delta * p_pellet.time_points / 20.0
+		if parent_getter.turn_timer >= 1.0 / 3.0:
+			parent_getter.turn_timer -= 30.0 * p_delta * p_pellet.time_points / 20.0
 		if graze_timer >= 0.0 and graze_timer < 4.0 / 30.0:
 			graze_timer = 3.0 / 30.0
 		elif graze_timer < 0.0:
@@ -34,8 +37,8 @@ func graze(p_pellet: Pellet, p_delta: float) -> void:
 	else:
 		p_pellet.grazed = true
 		soul.battle.tp += p_pellet.graze_points
-		if get_parent().get_parent().turn_timer >= 1.0 / 3.0:
-			get_parent().get_parent().turn_timer -= p_pellet.time_points
+		if parent_getter.turn_timer >= 1.0 / 3.0:
+			parent_getter.turn_timer -= p_pellet.time_points
 		Sounds.play("snd_graze", 0.7)
 		graze_timer = 1.0 / 3.0
 
